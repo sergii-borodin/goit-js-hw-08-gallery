@@ -1,4 +1,4 @@
-const galleryItems = [
+export default [
   {
     preview:
       'https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825__340.jpg',
@@ -63,38 +63,3 @@ const galleryItems = [
     description: 'Lighthouse Coast Sea',
   },
 ];
-
-const galleryContainerRef = document.querySelector('.js-gallery');
-const galleryMarkup = cerateGalleryMarkup(galleryItems);
-galleryContainerRef.insertAdjacentHTML('beforeEnd',galleryMarkup);
-//console.log(galleryMarkup);
-
-galleryContainerRef.addEventListener('click', onGalleryItemClick);
-
-function onGalleryItemClick(e) {
-  e.preventDefault();
-  console.log(e.target.dataset.source);
-  
-
-}
-
-function cerateGalleryMarkup(galleryItems) {
-  return galleryItems
-    .map(({ preview, original, description }) => {
-      return `<li class="gallery__item">
-  <a
-    class="gallery__link"
-    href="${original}"
-  >
-    <img
-      class="gallery__image"
-      src="${preview}"
-      data-source="${original}"
-      alt="${description}"
-    />
-  </a>
-</li>`
-    })
-    .join('');
-};
-
